@@ -19,7 +19,7 @@ try {
     # Calcula um indice para remover o 2 mais antigo
     $containerAntigo = Get-AzureStorageContainer -Name "$prefixo*" -Context $contexto
     $totalContainers = $containerAntigo.count
-    [int]$indice = $totalContainers - 2
+    [int]$indice = $totalContainers - 3
     # Remove o mais antigo
     if ($indice -ge 0) {
         $containerAntigo = $containerAntigo[$indice].Name
