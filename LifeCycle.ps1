@@ -13,12 +13,12 @@ try {
     $contexto = New-AzStorageContext -StorageAccountName "$contaStorage" -StorageAccountKey $chaveStorage
     # Cria o container novo
     Write-Host "Criando Container: $nome"
-    New-AzStorageContext -Name "$nome" -Context $contexto 
+    New-AzStorageContainer -Name "$nome" -Context $contexto 
     # Remove o mais antigo
-    $containerAntigo = Get-AzStorageContext -Name container* -Context $contexto
+    $containerAntigo = Get-AzStorageContainer -Name container* -Context $contexto
     $containerAntigo = $containerAntigo[0].Name
     Write-Host "Removendo o container: $containerAntigo"
-    Remove-AzStorageContext -Name "$containerAntigo" -Context $contexto 
+    Remove-AzStorageContainer -Name "$containerAntigo" -Context $contexto 
 
 }
 catch {
