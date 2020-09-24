@@ -10,7 +10,7 @@ $chaveStorage = ''
 
 try {
     # Conecta no Azure
-    $contexto = New-AzureStorageContainer -StorageAccountName "$contaStorage" -StorageAccountKey $chaveStorage
+    $contexto = New-AzureStorageContext -StorageAccountName "$contaStorage" -StorageAccountKey $chaveStorage
     # Cria o container novo
     Write-Host "Criando Container: $nome"
     New-AzureStorageContainer -Name "$nome" -Context $contexto 
@@ -18,7 +18,7 @@ try {
     $containerAntigo = Get-AzureStorageContainer -Name container* -Context $contexto
     $containerAntigo = $containerAntigo[0].Name
     Write-Host "Removendo o container: $containerAntigo"
-    Remove-AzureStorageContainer -Name "$containerAntigo" -Context $contexto 
+    Remove-AzureStorageContainer -Name "$containerAntigo" -Context $contexto
 
 }
 catch {
